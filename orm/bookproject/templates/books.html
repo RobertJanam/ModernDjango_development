@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <h2 style="text-align: center;">List of Books</h2>
+        <br>
+        {% for book in books %}
+        <p style="margin-left: 20pc;"><b style="color: cadetblue;">ID:</b> {{book.id}}</p>
+        <p style="margin-left: 20pc;"><b>TITLE:</b> {{book.title}}</p>
+        <p style="margin-left: 20pc;"><b>AUTHOR:</b> {{book.author}}</p>
+        <p style="margin-left: 20pc;"><b>PUBLISHER:</b> {{book.publisher}}</p>
+        <hr>
+        {% endfor %}
+    </body>
+</html>

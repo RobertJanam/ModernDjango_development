@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <h2 style="text-align: center;"> Title: {{book.title}}</h2>
+        <br>
+
+        <p style="margin-left: 20pc;"><b>ID:</b> {{book.id}}</p>
+        <p style="margin-left: 20pc;"><b>AUTHOR:</b> {{book.author}}</p>
+        <p style="margin-left: 20pc;"><b>PRICE:</b> {{book.price}}</p>
+        <p style="margin-left: 20pc;"><b>PUBLISHER:</b> {{book.publisher}}</p>
+
+        {% if book.ebook %}
+        <p style="margin-left: 20pc;"><b>Available as Ebook?:</b> Yes</p>
+
+        {% else %}
+        <p style="margin-left: 20pc;"><b>Available as Ebook?:</b> No</p>
+        <hr>
+
+        {% endif %}
+
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <form action="/bookapp/addbook/" method="post">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <input type="submit" value="OK">
+            <!--<p><label for="ttl">Title: </label></p>
+            <input type="text" name="title" id="ttl">
+            <p><label for="auth">Author: </label></p>
+            <input type="text" name="author" id="auth">
+            <p><label for="price">Price: </label></p>
+            <input type="number" name="price" id="price">
+            <p><label for="pub">Publisher: </label></p>
+            <input type="text" name="publisher" id="pub"><br><br>
+            <input type="submit" value="OK"> -->
+        </form>
+    </body>
+</html>
