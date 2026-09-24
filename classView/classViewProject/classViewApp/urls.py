@@ -6,4 +6,6 @@ urlpatterns = [
     path('name/', views.MyView.as_view(), name="name"),
     path('name/<name>', views.IndexView.as_view(), name='name'),
     path('getbook/', views.addbook, name='addbook'),
+    path('newbook/', views.CreateBookView.as_view(), name='newbook'),
+    path('getbooks/', views.displaybook, name='getbooks'),
 ]

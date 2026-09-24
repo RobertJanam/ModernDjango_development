@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <h2 style="margin-left: 35pc;">List of Books: Updated</h2>
+
+        {%for book in books%}
+        <p style="margin-left: 23pc;">BOOK: {{forloop.counter}}</p>
+        <div style="margin-left: 25pc;">
+            <span style="font-weight: bold;">Title: </span>
+            <span style="color: rgb(0, 106, 255);">{{book.title}}</span>
+        </div>
+        <div style="margin-left: 25pc;">
+            <span style="font-weight: bold;">Author: </span>
+            <span style="color: rgb(0, 106, 255);">{{book.author}}</span>
+        </div>
+        <div style="margin-left: 25pc;">
+            <span style="font-weight: bold;">Price: </span>
+            <span style="color: rgb(0, 106, 255);">{{book.price}}</span>
+        </div>
+        <div style="margin-left: 25pc;">
+            <span style="font-weight: bold;">Publisher: </span>
+            <span style="color: rgb(0, 106, 255);">{{book.publisher}}</span>
+        </div>
+        {%if book.ebook%}
+        <p style="margin-left: 25pc;color: rgb(0, 255, 8);">Available as Ebook</p><br>
+        {%else%}
+        <p style="margin-left: 25pc;color: rgb(255, 47, 0);">NOT available as Ebook</p><br>
+        {%endif%}
+
+        {%endfor%}
+    </body>
+</html>
