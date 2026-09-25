@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView # TemplateView is defined in this class
 from django.views.generic import CreateView # Importing CreateView from generic module
 from django.views.generic import UpdateView
+from django.views.generic.edit import DeleteView # From generic.edit module
 from .models import Book # importing Book Model
 
 # Create your views here.
@@ -67,3 +68,15 @@ class UpdateBookView(UpdateView): # update your form using pk: id field
     template_name = 'bookform.html'
     
     success_url = reverse_lazy('list_books')
+    
+class DeleteBookView(DeleteView): # attempt to delete a book will use 'author' as the selection
+    model = Book
+    template_name = 'confirm_deletebook.html'
+    
+    def get_object(self):
+        book = Book.objects.get(author=self.kwargs['author'])
+        return book   
+    
+    success_url = reverse_lazy('list_books')
+    
+    
