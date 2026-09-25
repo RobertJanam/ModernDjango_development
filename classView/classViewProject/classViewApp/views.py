@@ -6,6 +6,7 @@ from .forms import BookForm
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView # TemplateView is defined in this class
 from django.views.generic import CreateView # Importing CreateView from generic module
+from django.views.generic import UpdateView
 from .models import Book # importing Book Model
 
 # Create your views here.
@@ -51,8 +52,18 @@ class CreateBookView(CreateView):
     
     template_name = "bookform.html" # get the html file
     
-    success_url = reverse_lazy('getbooks') # redirect to this URL
+    success_url = reverse_lazy('list_books') # redirect to this URL
     
     # def get_success_url(self): # same as this above
     #     return reverse('getbooks') # use this instead of reverse_lazy
+  
+# compared to the function-based view I worked on earlier in the chapter, this one is much more efficient
+# as it does not require me to create an instance manually, and it prevents a case in which instead of updating
+# the instance it creates a new object (row) without replacing the old one.  
+class UpdateBookView(UpdateView): # update your form using pk: id field
+    model = Book
+    fields = ['title', 'author', 'price', 'publisher', 'ebook']
     
+    template_name = 'bookform.html'
+    
+    success_url = reverse_lazy('list_books')
