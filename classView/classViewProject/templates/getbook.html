@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <h2 style="margin-left: 35pc;"><b>Book</b></h2>
+        <div style="margin-left: 35pc;">
+            <span>Title</span>
+            <span style="color: blue;">{{object.title}}</span>
+        </div>
+        <div style="margin-left: 35pc;">
+            <span>Author</span>
+            <span style="color: blue;">{{object.author}}</span>
+        </div>
+        <div style="margin-left: 35pc;">
+            <span>Price</span>
+            <span style="color: blue;">{{object.price}}</span>
+        </div>
+        <div style="margin-left: 35pc;">
+            <span>Publisher</span>
+            <span style="color: blue;">{{object.publisher}}</span>
+        </div>
+
+        {%if object.ebook%}
+        <p style="color: green; margin-left: 35pc;">Available as Ebook</p>
+        {%else%}
+        <p style="color: red; margin-left: 35pc;">Not available as Ebook</p>
+        {%endif%}
+    </body>
+</html>

@@ -5,9 +5,10 @@ urlpatterns = [
     # since django resolver sends requests and path parameters to a callable function and we are using a class in our view, we add as_view() class method
     path('name/', views.MyView.as_view(), name="name"),
     path('name/<name>', views.IndexView.as_view(), name='name'),
-    path('getbook/', views.addbook, name='add_book'),
+    path('addbook/', views.addbook, name='add_book'),
     path('newbook/', views.CreateBookView.as_view(), name='new_book'),
     path('getbooks/', views.displaybook, name='list_books'),
     path('update/<int:pk>', views.UpdateBookView.as_view(), name='update_book'),
     path('delete/<author>', views.DeleteBookView.as_view(), name='delete_book'),
+    path('getbook/<int:id>', views.DetailBookView.as_view(), name='list_book'),
 ]

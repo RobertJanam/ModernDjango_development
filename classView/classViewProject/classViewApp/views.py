@@ -8,6 +8,7 @@ from django.views.generic.base import TemplateView # TemplateView is defined in 
 from django.views.generic import CreateView # Importing CreateView from generic module
 from django.views.generic import UpdateView
 from django.views.generic.edit import DeleteView # From generic.edit module
+from django.views.generic.detail import DetailView # DEtailView class
 from .models import Book # importing Book Model
 
 # Create your views here.
@@ -79,4 +80,11 @@ class DeleteBookView(DeleteView): # attempt to delete a book will use 'author' a
     
     success_url = reverse_lazy('list_books')
     
+class DetailBookView(DetailView):
+    model = Book
+    template_name = "getbook.html"
+    
+    def get_object(self):
+        book = Book.objects.get(id=self.kwargs['id'])
+        return book
     
