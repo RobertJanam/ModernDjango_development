@@ -5,10 +5,10 @@ from django.views import View # better control and flexibility
 from .forms import BookForm
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView # TemplateView is defined in this class
-from django.views.generic import CreateView # Importing CreateView from generic module
-from django.views.generic import UpdateView
+from django.views.generic import CreateView, UpdateView # Importing CreateView, UpdateView from generic module
 from django.views.generic.edit import DeleteView # From generic.edit module
 from django.views.generic.detail import DetailView # DEtailView class
+from django.views.generic.list import ListView
 from .models import Book # importing Book Model
 
 # Create your views here.
@@ -54,7 +54,7 @@ class CreateBookView(CreateView):
     
     template_name = "bookform.html" # get the html file
     
-    success_url = reverse_lazy('list_books') # redirect to this URL
+    success_url = reverse_lazy('get_books') # redirect to this URL
     
     # def get_success_url(self): # same as this above
     #     return reverse('getbooks') # use this instead of reverse_lazy
@@ -68,7 +68,7 @@ class UpdateBookView(UpdateView): # update your form using pk: id field
     
     template_name = 'bookform.html'
     
-    success_url = reverse_lazy('list_books')
+    success_url = reverse_lazy('get_books')
     
 class DeleteBookView(DeleteView): # attempt to delete a book will use 'author' as the selection
     model = Book
@@ -78,13 +78,22 @@ class DeleteBookView(DeleteView): # attempt to delete a book will use 'author' a
         book = Book.objects.get(author=self.kwargs['author'])
         return book   
     
-    success_url = reverse_lazy('list_books')
+    success_url = reverse_lazy('get_books')
     
-class DetailBookView(DetailView):
+class DetailBookView(DetailView): # retrieves a specific book
     model = Book
     template_name = "getbook.html"
     
     def get_object(self):
-        book = Book.objects.get(id=self.kwargs['id'])
-        return book
+        book = Book.objects.get(id=self.kwargs['id']) # uses id as the path parameter (slug field)
+        return book # returns the object (object.title...)
     
+class ListBookView(ListView):
+    model = Book
+    template_name = 'listbooks.html'
+    
+    def get_context_data(self):
+        books = Book.objects.all()
+        context = {'books': books}
+        
+        return context
