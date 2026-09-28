@@ -9,9 +9,10 @@ class Book(models.Model):
     price = models.IntegerField()
     publisher = models.CharField(max_length=100)
     ebook = models.BooleanField(default=True)
+    coverimg = models.CharField(max_length=100, default="", blank=True) # added cover image field that defaults to a blank row.
 
     class Meta:
         db_table = 'books'
 
     def __str__(self):
-        return f"Title: {self.title}, Author: {self.author}, Price: {self.price}, Publisher: {self.publisher}, E-Book: {self.ebook}"
+        return f"Title: {self.title}, Author: {self.author}, Price: {self.price}, Publisher: {self.publisher}, E-Book: {self.ebook}, Cover Image: {self.coverimg}"

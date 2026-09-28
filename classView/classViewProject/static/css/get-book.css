@@ -1,0 +1,44 @@
+h2 {
+    margin-left: 45pc;
+    font-size: 3rem;
+}
+
+.image-container {
+    width: 40%;
+    float: left;
+    margin-left: 2pc;
+}
+
+.image-container img {
+    width: 50%;
+    height: 55%;
+}
+
+.details-container {
+    margin-top: 10pc;
+    font-size: 1.3rem;
+}
+
+.title-container .title-value {
+    color: blue;
+}
+
+.author-container .author-value {
+    color: blue;
+}
+
+.price-container .price-value {
+    color: blue;
+}
+
+.publisher-container .publisher-value {
+    color: blue;
+}
+
+p.book-true{
+    color: green;
+}
+
+p.book-false{
+    color: red;
+}

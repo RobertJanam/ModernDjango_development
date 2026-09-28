@@ -50,7 +50,7 @@ class IndexView(TemplateView):
 
 class CreateBookView(CreateView):
     model = Book # uses the Book model
-    fields = ['title', 'author', 'price', 'publisher', 'ebook']
+    form_class = BookForm # replaced field class so that Django does not override the form class.
     
     template_name = "bookform.html" # get the html file
     
@@ -64,7 +64,7 @@ class CreateBookView(CreateView):
 # the instance it creates a new object (row) without replacing the old one.  
 class UpdateBookView(UpdateView): # update your form using pk: id field
     model = Book
-    fields = ['title', 'author', 'price', 'publisher', 'ebook']
+    form_class = BookForm # replaced field class so that Django does not override the form class.
     
     template_name = 'bookform.html'
     
@@ -83,10 +83,7 @@ class DeleteBookView(DeleteView): # attempt to delete a book will use 'author' a
 class DetailBookView(DetailView): # retrieves a specific book
     model = Book
     template_name = "getbook.html"
-    
-    def get_object(self):
-        book = Book.objects.get(id=self.kwargs['id']) # uses id as the path parameter (slug field)
-        return book # returns the object (object.title...)
+    pk_url_kwarg = 'id' # Tells Django to look for 'id' in the path parameter. Simpler
     
 class ListBookView(ListView):
     model = Book

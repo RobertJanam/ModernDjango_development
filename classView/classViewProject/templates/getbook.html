@@ -1,27 +1,40 @@
 <html>
     <body>
-        <h2 style="margin-left: 35pc;"><b>Book</b></h2>
-        <div style="margin-left: 35pc;">
-            <span>Title</span>
-            <span style="color: blue;">{{object.title}}</span>
-        </div>
-        <div style="margin-left: 35pc;">
-            <span>Author</span>
-            <span style="color: blue;">{{object.author}}</span>
-        </div>
-        <div style="margin-left: 35pc;">
-            <span>Price</span>
-            <span style="color: blue;">{{object.price}}</span>
-        </div>
-        <div style="margin-left: 35pc;">
-            <span>Publisher</span>
-            <span style="color: blue;">{{object.publisher}}</span>
+        {%load static%}
+        <!--Added a sub-folder css so now I have to reference it here-->
+        <link rel="stylesheet" href="{% static 'css/get-book.css'%}"> 
+
+        <h2><strong>Book</strong></h2>
+
+        <div class="image-container">
+            <!--Add: filter gets the image from a sub-folder within the static folder-->
+            <img src="{% static 'images/'|add:object.coverimg %}" alt="Front image of a book cover for {{object.title}}.">
         </div>
 
-        {%if object.ebook%}
-        <p style="color: green; margin-left: 35pc;">Available as Ebook</p>
-        {%else%}
-        <p style="color: red; margin-left: 35pc;">Not available as Ebook</p>
-        {%endif%}
+        <div class="details-container">
+            <div class="title-container">
+                <span>Title:</span>
+                <span class="title-value">{{object.title}}</span>
+            </div>
+            <div class="author-container">
+                <span>Author:</span>
+                <span class="author-value">{{object.author}}</span>
+            </div>
+            <div class="price-container">
+                <span>Price:</span>
+                <span class="price-value">{{object.price}}</span>
+            </div>
+            <div class="publisher-container">
+                <span>Publisher:</span>
+                <span class="publisher-value">{{object.publisher}}</span>
+            </div>
+
+            {%if object.ebook%}
+            <p class="boook-true">Available as Ebook</p>
+            {%else%}
+            <p class="book-false">Not available as Ebook</p>
+            {%endif%}
+        </div>
+        
     </body>
 </html>

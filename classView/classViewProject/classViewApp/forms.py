@@ -1,13 +1,16 @@
 from django import forms
 from .models import Book
 
+# removed the field attributes and replaced them with the class meta fields and labels
 class BookForm(forms.ModelForm):
-    title = forms.CharField(label="Title", max_length=100)
-    author = forms.CharField(label="Author", max_length=100)
-    price = forms.IntegerField(label="Price")
-    publisher = forms.CharField(label="Publisher", max_length=100)
-    ebook = forms.BooleanField(initial=True)
-    
     class Meta:
         model = Book
-        exclude = ['id']
+        fields = ['title', 'author', 'price', 'publisher', 'coverimg', 'ebook'] # excludes 'id'
+        
+        labels = {
+            'title': 'Title',
+            'author': 'Author',
+            'price': 'Price',
+            'publisher': 'Publisher',
+            'coverimg': 'Cover Image',
+        }

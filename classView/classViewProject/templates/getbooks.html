@@ -20,6 +20,16 @@
             <span style="font-weight: bold;">Publisher: </span>
             <span style="color: rgb(0, 106, 255);">{{book.publisher}}</span>
         </div>
+
+        {%if book.coverimg == "NULL" or not book.coverimg%}
+
+        {%else%}
+        <div style="margin-left: 25pc;">
+            <span style="font-weight: bold;">Cover Image: </span>
+            <span style="color: rgb(0, 106, 255);">{{book.coverimg}}</span>
+        </div>
+        {%endif%}
+
         {%if book.ebook%}
         <p style="margin-left: 25pc;color: rgb(0, 255, 8);">Available as Ebook</p><br>
         {%else%}
