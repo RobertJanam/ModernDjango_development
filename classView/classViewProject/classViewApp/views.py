@@ -87,10 +87,20 @@ class DetailBookView(DetailView): # retrieves a specific book
     
 class ListBookView(ListView):
     model = Book
-    template_name = 'listbooks.html'
+    template_name = "listbooks.html"
     
     def get_context_data(self):
         books = Book.objects.all()
         context = {'books': books}
         
+        return context
+    
+class ListAboutBookView(ListView): # gets all books from the database and allows the html page to use it.
+    model = Book
+    template_name = "aboutbooks.html"
+    
+    def get_context_data(self):
+        books = Book.objects.all()
+        context = {'books': books}
+    
         return context

@@ -1,0 +1,47 @@
+h2 {
+    text-align: center;
+    font-size: 3rem;
+    padding: 15px 20px;
+    border-bottom: 1px rgb(193, 191, 191);
+}
+
+.collapsible{
+    font-size: 30px;
+    font-family:Arial, Helvetica, sans-serif; /*I don't know why I chose this font */
+    background-color: rgb(122, 122, 122);
+    color: #fefefe;
+    padding: 15px 20px; /*adding spaces between the book titles*/
+    margin-bottom: 10px; /* The real mvp. A space is formed between the book titles that includes the background color as well*/
+}
+
+.list-container {
+    display: none;
+    margin-left: 10px;
+    border-bottom: 1px rgb(167, 165, 165);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* Code completion comes in handy sometimes */
+    font-size: 25px;
+}
+
+.list-container .id-value {
+    color: blue;
+}
+
+.list-container .author-value {
+    color: blue;
+}
+
+.list-container .price-value {
+    color: blue;
+}
+
+.list-container .publisher-value {
+    color: blue;
+}
+
+.ebook-container .ebook-true {
+    color: green;
+}
+
+.ebook-container .ebook-false {
+    color: red;
+}

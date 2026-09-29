@@ -1,0 +1,55 @@
+<html>
+
+    <body>
+        {%load static%}
+
+        <link rel="stylesheet" href="{%static 'css/about-books.css'%}">
+        <script src="{%static 'js/about-books.js'%}"></script> <!-- First time introducing js in my development -->
+
+        <h2><strong>About Books</strong></h2>
+
+        {%for book in books%}
+        <div id="item-{{book.id}}" class="collapsible" onclick="myfunction('{{book.id}}')">
+            <strong>{{forloop.counter}}. {{book.title}}</strong>
+        </div>
+
+        <div id="content-{{book.id}}" class="list-container"> <!-- I use this to get the ID var passed for this list container instead of the collapsible container-->
+
+            <ul>
+
+                <li>
+                    <span><b>ID: </b></span>
+                    <span class="id-value">{{book.id}}</span>
+                </li>
+
+                <li>
+                    <span><b>Author: </b></span>
+                    <span class="author-value">{{book.author}}</span>
+                </li>
+
+                <li>
+                    <span><b>Price: </b></span>
+                    <span class="price-value">{{book.price}}</span>
+                </li>
+
+                <li>
+                    <span><b>Publisher: </b></span>
+                    <span class="publisher-value">{{book.publisher}}</span>
+                </li>
+
+                
+                <div class="ebook-container">
+                    {%if book.ebook%}
+                    <li class="ebook-true">Available as Ebook</li>
+                    {%else%}
+                    <li class="ebook-false">Not Available as Ebook</li>
+                    {%endif%}
+                </div>
+                
+            </ul>
+
+        </div>
+        {%endfor%}
+    </body>
+    
+</html>
